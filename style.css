@@ -144,6 +144,7 @@ body {
   background: url('headerphoto.png') center/cover no-repeat;
   background-size: cover;
   animation: fadeInHero 1.5s ease-in-out;
+  pointer-events: none; /* temporarily disable hero overlay blocking clicks */
 }
 
 .hero::before {
@@ -160,15 +161,7 @@ body {
 .hero-content {
   position: relative;
   z-index: 2;
-  display: flex;
-  justify-content: center; /* center text horizontally */
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
-  max-width: 900px;
-  padding: 0 1rem;
-  opacity: 0;
-  animation: fadeInContent 1.5s ease-in-out forwards 0.5s;
+  pointer-events: auto; /* allow interactions for content inside hero */
 }
 
 @media (max-width: 768px) {

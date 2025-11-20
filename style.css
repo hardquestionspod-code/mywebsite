@@ -135,17 +135,17 @@ body {
 .hero {
   position: relative;
   width: 100%;
-  height: 100vh; /* Full viewport height */
+  height: 100vh;
+  padding-top: 80px; /* navbar height */
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: url('headerphoto.png') center/cover no-repeat fixed; /* fixed for parallax */
+  background: url('headerphoto.png') center/cover no-repeat;
   background-size: cover;
   animation: fadeInHero 1.5s ease-in-out;
 }
 
-/* Fade overlay */
 .hero::before {
   content: "";
   position: absolute;
@@ -153,28 +153,30 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Adjust opacity for desired fade */
+  background-color: rgba(0,0,0,0.5);
   z-index: 1;
 }
 
-/* Hero content */
 .hero-content {
   position: relative;
-  z-index: 2; /* Above overlay */
+  z-index: 2;
   display: flex;
+  justify-content: center; /* center text horizontally */
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 1200px;
+  flex-direction: column;
+  text-align: center;
+  max-width: 900px;
   padding: 0 1rem;
-  opacity: 0; /* Start hidden for fade-in */
-  animation: fadeInContent 1.5s ease-in-out forwards 0.5s; /* delay to sync with hero */
+  opacity: 0;
+  animation: fadeInContent 1.5s ease-in-out forwards 0.5s;
 }
 
-.hero-text {
-  color: #fff;
-  text-align: left;
+@media (max-width: 768px) {
+  .hero {
+    background-attachment: scroll; /* fix mobile parallax */
+  }
 }
+
 
 /* Animations */
 @keyframes fadeInHero {

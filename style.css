@@ -131,20 +131,84 @@ body {
 }
 
 /* Hero */
-.hero{
-  height:100vh;
-  display:flex;align-items:center;justify-content:center;
-  position:relative;
-  overflow:hidden;
+/* Hero/Header */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: url('headerphoto.png') center/cover no-repeat fixed; /* fixed for parallax */
+  background-size: cover;
+  animation: fadeInHero 1.5s ease-in-out;
 }
-.hero-content{display:flex;align-items:center;justify-content:space-between;gap:3rem;width:90%;max-width:1200px;}
-.hero-text h2{font-size:3rem; background: linear-gradient(90deg,#ff7b54,#f1c40f); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:1rem;}
-.typing-text{font-size:1.2rem;color:#aaa;margin-bottom:2rem;animation: typing 4s steps(40) 1;}
-@keyframes typing {0% {width:0} 100% {width:100%}}
-.hero .btn.primary{background:var(--primary-color);color:#fff;padding:.9rem 2rem;border-radius:50px;font-weight:bold;text-decoration:none;transition:0.3s;}
-.hero .btn.primary:hover{background:#ff9a76;}
-.hero-image img{width:100%;max-width:450px;transform:translateY(0);transition:0.5s;}
-.hero-image img:hover{transform:translateY(-10px)}
+
+/* Fade overlay */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: url('headerphoto.png') center/cover no-repeat;
+  background-size: cover;
+  animation: fadeInHero 1.5s ease-in-out;
+  will-change: transform; /* improve performance */
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 1rem;
+  opacity: 0;
+  animation: fadeInContent 1.5s ease-in-out forwards 0.5s;
+}
+
+.hero-text {
+  color: #fff;
+  text-align: left;
+}
+
+/* Animations */
+@keyframes fadeInHero {
+  0% { opacity: 0; transform: scale(1.05); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeInContent {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+
+
 
 /* Floating shapes */
 .floating-shapes .shape{
@@ -279,11 +343,84 @@ body {
 /* Buttons */
 .btn.primary{padding:.7rem 1.4rem;border-radius:25px;text-decoration:none;font-weight:bold;color:#000;background:var(--accent-color);transition:0.3s;display:inline-block;}
 .btn.primary:hover{background:yellow;}
+/* Footer Styles */
+.site-footer {
+  background: #0d0d0d;
+  color: #ddd;
+  padding: 2.5rem 1rem; /* Added horizontal padding for smaller screens */
+  border-top: 1px solid #222;
+  font-family: sans-serif;
+}
 
-/* Footer */
-footer{background:#111;padding:4rem 0;text-align:center;}
-footer .socials a{margin:0 .5rem;color:var(--primary-color);text-decoration:none;transition:0.3s;}
-footer .socials a:hover{color:var(--accent-color);}
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap; /* Ensures items wrap on smaller screens */
+}
+
+.footer-left p {
+  margin: 0.3rem 0;
+  font-size: 0.95rem;
+}
+
+.footer-left .tagline {
+  opacity: 0.7;
+  font-size: 0.9rem;
+}
+
+.footer-socials ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap; /* Makes social icons wrap if too many */
+  gap: 0.6rem;
+}
+
+.footer-socials li {
+  margin-bottom: 0; /* Reset bottom margin since using flex gap */
+}
+
+.footer-socials a {
+  color: #ddd;
+  text-decoration: none;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: color 0.2s ease;
+}
+
+.footer-socials a:hover {
+  color: #fff;
+}
+
+.footer-socials i {
+  font-size: 1.1rem;
+}
+
+/* Mobile / Responsive */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem; /* Increase spacing between sections */
+  }
+
+  .footer-socials ul {
+    justify-content: center; /* Center social icons on mobile */
+  }
+
+  .footer-left, .footer-socials {
+    width: 100%;
+  }
+}
+
 
 /* Responsive */
 @media(max-width:768px){.hero-content{flex-direction:column;text-align:center;}.nav-links{flex-direction:column;gap:0.5rem;}}

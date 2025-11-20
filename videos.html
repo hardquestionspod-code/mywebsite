@@ -7,17 +7,28 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <nav class="navbar">
-    <div class="container">
-      <h1 class="logo">HARD QUESTIONS PODCAST</h1>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="videos.html">Watch Videos</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <img src="logo.png" alt="Hard Questions Podcast Logo" class="logo-img">
+      HARD QUESTIONS PODCAST
+    </a>
+    
+    <!-- Hamburger for mobile -->
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
-  </nav>
+    
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="videos.html">Watch Videos</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </div>
+</nav>
 
   <header class="videos-header">
     <div class="container">
@@ -192,17 +203,31 @@
     </section>
   </main>
 
-  <footer>
-    <div class="container footer-content">
-      <p>&copy; 2025 Hard Questions Podcast. All Rights Reserved.</p>
-      <div class="socials">
-        <a href="#">YouTube</a>
-        <a href="#">Spotify</a>
-        <a href="#">Instagram</a>
-        <a href="#">X (Twitter)</a>
-      </div>
+<footer class="site-footer">
+  <div class="container footer-content">
+    <div class="footer-left">
+      <p>© 2025 <strong>Hard Questions Podcast</strong>. All rights reserved.</p>
+      <p class="tagline">Challenging ideas. Sparking conversations.</p>
     </div>
-  </footer>
+
+    <nav class="footer-socials" aria-label="Social Media">
+      <ul>
+        <li><a href="#" target="_blank" rel="noopener">
+          <i class="fa-brands fa-youtube"></i> YouTube
+        </a></li>
+        <li><a href="#" target="_blank" rel="noopener">
+          <i class="fa-brands fa-spotify"></i> Spotify
+        </a></li>
+        <li><a href="#" target="_blank" rel="noopener">
+          <i class="fa-brands fa-instagram"></i> Instagram
+        </a></li>
+        <li><a href="#" target="_blank" rel="noopener">
+          <i class="fa-brands fa-x-twitter"></i> X
+        </a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
 
   <script src="script.js"></script>
 </body>

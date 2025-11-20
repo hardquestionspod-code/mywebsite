@@ -28,3 +28,13 @@ const navLinks = document.getElementById('nav-links');
 hamburger.addEventListener('click', () => {
   navLinks.classList.toggle('show');
 });
+
+<script>
+  const hero = document.querySelector('.hero');
+
+  window.addEventListener('scroll', () => {
+    let scrollPosition = window.pageYOffset;
+    // Move background slower than scroll (parallax effect)
+    hero.style.backgroundPositionY = `${scrollPosition * 0.5}px`;
+  });
+</script>

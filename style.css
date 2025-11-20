@@ -146,20 +146,6 @@ body {
 }
 
 /* Fade overlay */
-.hero {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background: url('headerphoto.png') center/cover no-repeat;
-  background-size: cover;
-  animation: fadeInHero 1.5s ease-in-out;
-  will-change: transform; /* improve performance */
-}
-
 .hero::before {
   content: "";
   position: absolute;
@@ -167,21 +153,22 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5); /* Adjust opacity for desired fade */
   z-index: 1;
 }
 
+/* Hero content */
 .hero-content {
   position: relative;
-  z-index: 2;
+  z-index: 2; /* Above overlay */
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
   max-width: 1200px;
   padding: 0 1rem;
-  opacity: 0;
-  animation: fadeInContent 1.5s ease-in-out forwards 0.5s;
+  opacity: 0; /* Start hidden for fade-in */
+  animation: fadeInContent 1.5s ease-in-out forwards 0.5s; /* delay to sync with hero */
 }
 
 .hero-text {
@@ -200,13 +187,13 @@ body {
   100% { opacity: 1; transform: translateY(0); }
 }
 
+/* Responsive */
 @media (max-width: 768px) {
   .hero-content {
     flex-direction: column;
     text-align: center;
   }
 }
-
 
 
 

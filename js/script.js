@@ -21,32 +21,50 @@ document.addEventListener('DOMContentLoaded', () => {
         if (entry.isIntersecting) entry.target.classList.add("show");
       });
     },
-    { threshold: 0.1 } // Trigger when 10% of the element is in view
+    { threshold: 0.1 }
   );
 
   videoCards.forEach(card => observer.observe(card));
 
-  // ===== Hamburger Menu Toggle =====
-  const hamburger = document.getElementById('hamburger');
-  const navLinks = document.getElementById('nav-links');
+  // ===== Hamburger Menu Toggle + Outside Click =====
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.nav-links');
+  const body = document.body;
 
   if (hamburger && navLinks) {
-    hamburger.addEventListener('click', () => {
+    // Toggle menu on hamburger click
+    hamburger.addEventListener('click', (e) => {
       navLinks.classList.toggle('show');
+      body.classList.toggle('menu-open');
+      e.stopPropagation(); // prevent immediate close
+    });
+
+    // Close menu on nav link click
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('show');
+        body.classList.remove('menu-open');
+      });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (navLinks.classList.contains('show')) {
+        if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+          navLinks.classList.remove('show');
+          body.classList.remove('menu-open');
+        }
+      }
     });
   }
 
   // ===== Hero Parallax Scroll =====
   const hero = document.querySelector('.hero');
-  
   if (hero) {
     window.addEventListener('scroll', () => {
       const scrollPosition = window.pageYOffset;
-      // Move background slower than scroll (parallax effect)
       hero.style.backgroundPositionY = `${scrollPosition * 0.5}px`;
     });
   }
 
 });
-
-

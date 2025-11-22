@@ -261,22 +261,23 @@ body {
 /* Grid */
 .featured-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
   padding: 1rem;
 }
 
 /* Fancy card style */
 .featured-grid > * {
-  background: linear-gradient(135deg, #ffffff 0%, #f3f3f3 100%);
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+  color: #fff; /* ensures text is readable */
   border-radius: 18px;
   padding: 1.6rem;
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
   /* glossy depth */
   box-shadow:
-    0 6px 20px rgba(0,0,0,0.08),
-    0 0 20px rgba(255,255,255,0.5) inset;
+    0 6px 20px rgba(0,0,0,0.3),
+    0 0 15px rgba(255,255,255,0.1) inset;
 
   /* soft floating effect */
   transform: translateY(0);
@@ -288,12 +289,54 @@ body {
 
 /* Hover fancy effect */
 .featured-grid > *:hover {
-  transform: translateY(-10px) scale(1.03);
-  background: linear-gradient(135deg, #ffffff 0%, #fdfdfd 50%, #f3f3f3 100%);
+  transform: translateY(-6px) scale(1.02);
+  background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
   box-shadow:
-    0 12px 28px rgba(0,0,0,0.15),
-    0 0 30px rgba(255,255,255,0.7) inset;
+    0 10px 25px rgba(0,0,0,0.4),
+    0 0 20px rgba(255,255,255,0.1) inset;
 }
+
+/* ----------------------- */
+/* Mobile Responsive Tweaks */
+@media (max-width: 1024px) {
+  .featured-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* allow 2 columns on tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  .featured {
+    padding: 3rem 1.5rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .featured-grid {
+    grid-template-columns: 1fr; /* one column for small phones */
+    gap: 1.5rem;
+    padding: 0.5rem;
+  }
+
+  .featured-grid > * {
+    padding: 1rem;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.7rem;
+    letter-spacing: 1px;
+  }
+
+  .featured {
+    padding: 2rem 1rem;
+  }
+}
+
 
 
 /* Video Card */
@@ -695,3 +738,4 @@ body {
     margin-top: 1rem;
   }
 }
+
